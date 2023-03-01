@@ -9,7 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="com.example.taskmanager.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_navigation_home_to_onBoardingFragment"
+            app:destination="@id/onBoardingFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -28,8 +34,20 @@
         android:label="task"
         tools:layout="@layout/fragment_task" />
     <fragment
-        android:id="@+id/navigation_photo"
-        android:name="com.example.taskmanager.navigation_fourth"
-        android:label="Photo"
-        tools:layout="@layout/fragment_navigation_fourth" />
+        android:id="@+id/onBoardingFragment"
+        android:name="com.example.taskmanager.ui.OnBoarding.OnBoardingFragment"
+        android:label="fragment_on_boarding"
+        tools:layout="@layout/fragment_on_boarding" >
+        <action
+            android:id="@+id/action_onBoardingFragment_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/mobile_navigation"
+            app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment
+        android:id="@+id/photoFragment2"
+        android:name="com.example.taskmanager.ui.Photo.PhotoFragment"
+        android:label="PhotoFragment" />
+
+
 </navigation>

@@ -10,6 +10,8 @@
        android:layout_height="wrap_content"
        android:id="@+id/ed_title"
        android:hint="Title"
+       android:textColorHint="@color/grey"
+       android:textColor="@color/black_grey"
        android:layout_marginHorizontal="16dp"
        android:layout_marginTop="16dp"
        />
@@ -19,6 +21,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/et_desc"
         android:hint="Description"
+        android:textColorHint="@color/grey"
+        android:textColor="@color/black_grey"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         />

@@ -7,4 +7,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="btn_photo">photo</string>
     <string name="img_photo">Введите название фото</string>
+    <string name="skip">Skip</string>
 </resources>
