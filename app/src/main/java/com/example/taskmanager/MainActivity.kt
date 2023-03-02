@@ -61,8 +61,13 @@ class MainActivity : AppCompatActivity() {
             navView.isVisible = bottomNavFragments.contains(destination.id)
             if (destination.id == R.id.onBoardingFragment) {
                 supportActionBar?.hide()
-            } else supportActionBar?.show()
+            } else {
+                supportActionBar?.show()
+            }
+
+            navView.setupWithNavController(navController)
         })
-        navView.setupWithNavController(navController)
+
     }
+
 }

@@ -24,7 +24,7 @@ class OnBoardingAdapter(private val onStartClick:()->Unit): Adapter<OnBoardingAd
     }
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-        holder.bind(data.get(position))
+        holder.bind(data[position])
     }
 
     override fun getItemCount() = data.size
