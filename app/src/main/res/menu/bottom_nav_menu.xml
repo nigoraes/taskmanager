@@ -17,7 +17,7 @@
         android:title="@string/title_notifications" />
 
     <item
-        android:id="@+id/photoFragment2"
+        android:id="@+id/photoFragment"
         android:icon="@drawable/ic_photo"
         android:title="@string/btn_photo" />
 
