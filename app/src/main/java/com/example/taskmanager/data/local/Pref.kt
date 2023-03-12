@@ -4,24 +4,24 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 
 class Pref(context: Context) {
+    private val pref = context.getSharedPreferences(PREF_NAME, MODE_PRIVATE)
 
-    private  val pref = context.getSharedPreferences(PREF_NAME,MODE_PRIVATE)
-
-    fun isUserSeen(): Boolean{
-        return pref.getBoolean(SEEN_KEY,false)
+    fun isUserSeen(): Boolean {
+        return pref.getBoolean(SEEN_KEY, false)
     }
 
-
-    fun saveUserSeen(){
+    fun saveUserSeen() {
         pref.edit().putBoolean(SEEN_KEY, true).apply()
     }
 
-    fun setName(name:String){
-        pref.edit().putString(NAME_KEY,name).apply()
+    fun setName(name: String) {
+        pref.edit().putString(NAME_KEY, name).apply()
     }
-    fun getName():String{
-        return pref.getString(NAME_KEY,"").toString()
+
+    fun getName(): String {
+        return pref.getString(NAME_KEY, "").toString()
     }
+
 
     companion object{
         const val  PREF_NAME = "pref.task"

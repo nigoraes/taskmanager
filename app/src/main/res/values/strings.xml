@@ -8,4 +8,6 @@
     <string name="btn_photo">photo</string>
     <string name="img_photo">Введите название фото</string>
     <string name="skip">Skip</string>
+    <string name="error_empty_value">Fill in the blank</string>
+    <string name="enter_your_name">Enter your name</string>
 </resources>

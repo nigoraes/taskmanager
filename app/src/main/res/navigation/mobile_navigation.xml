@@ -49,7 +49,6 @@
             android:name="com.example.taskmanager.ui.Photo.PhotoFragment"
             android:label="PhotoFragment" />
     </fragment>
-
     <fragment
         android:id="@+id/authFragment"
         android:name="com.example.taskmanager.ui.auth.AuthFragment"
@@ -59,5 +58,6 @@
     <action
         android:id="@+id/actionToAuth"
         app:destination="@+id/authFragment"/>
+
 
 </navigation>

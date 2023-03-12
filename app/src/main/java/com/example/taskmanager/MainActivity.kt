@@ -1,6 +1,7 @@
 package com.example.taskmanager
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -11,11 +12,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.taskmanager.data.local.Pref
 import com.example.taskmanager.databinding.ActivityMainBinding
 import com.example.taskmanager.ui.home.HomeFragmentDirections
-import com.example.taskmanager.ui.home.HomeFragmentDirections.*
 import com.google.firebase.auth.FirebaseAuth
-
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityMainBinding
     private lateinit var pref: Pref
@@ -27,37 +28,45 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         pref = Pref(this)
         auth = FirebaseAuth.getInstance()
-
         val navView: BottomNavigationView = binding.navView
+
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         if (auth.currentUser?.uid == null) {
-            navController.navigate(actionToAuth())
+            navController.navigate(HomeFragmentDirections.actionToAuth())
         } else if (!pref.isUserSeen())
-            navController.navigate(actionNavigationHomeToOnBoardingFragment())
+            navController.navigate(HomeFragmentDirections.actionNavigationHomeToOnBoardingFragment())
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home,
                 R.id.navigation_dashboard,
                 R.id.navigation_notifications,
-                R.id.photoFragment,
                 R.id.taskFragment,
-
-                )
+                R.id.photoFragment,
+                R.id.authFragment
+            )
         )
         val bottomNavFragments = arrayListOf(
             R.id.navigation_home,
             R.id.navigation_dashboard,
-            R.id.navigation_notifications,)
+            R.id.navigation_notifications,
+            R.id.photoFragment
+        )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             navView.isVisible = bottomNavFragments.contains(destination.id)
-            if (destination.id == R.id.onBoardingFragment){
+            if (destination.id == R.id.onBoardingFragment) {
                 supportActionBar?.hide()
-            }else supportActionBar?.show()
+            } else {
+                supportActionBar?.show()
+            }
         }
         navView.setupWithNavController(navController)
+
+        FirebaseMessaging.getInstance().token.addOnSuccessListener {
+            Log.e("di", "token: $it")
+        }
     }
 }
